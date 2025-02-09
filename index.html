@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Edukasi Sejarah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Game Edukasi Sejarah di Indonesia</h1>
+        <div id="card" class="card">
+            <div class="front">
+                <img id="hero-image" src="assets/proklamasi.jpg" alt="Pahlawan">
+            </div>
+            <div class="back">
+                <p id="hero-description">Proklamasi</p>
+            </div>
+        </div>
+
+        <!-- 🎬 Start Screen -->
+        <div id="start-screen">
+        <h1>Selamat Datang di Game Sejarah!</h1>
+            <p>Uji pengetahuanmu tentang para pahlawan Indonesia!</p>
+        <button id="start-button" onclick="startGame()">Mulai Permainan</button>
+        </div>
+
+        <div id="question-container">
+            <p id="question">Apakah nama peristiwa bersejarah ini?</p>
+            <div id="options"></div>
+        </div>
+
+        <p id="score">Skor: 0</p>
+        <div id="timer-container">
+            <div id="progress-bar"></div>
+        </div>
+        <p id="timer">Waktu: 20s</p>
+
+        <!-- 🎮 Game Container -->
+        <div id="game-container" style="display: none;">
+            <div id="question-number"></div>
+            <!-- Tempat untuk kartu, pertanyaan, dan timer -->
+        </div>
+
+
+        <div id="popup">
+            <div id="popup-icon">✅</div>
+            <p id="popup-message">Jawaban benar! +10 poin 🎉</p>
+        </div>
+
+        <div id="final-popup">
+            <div id="final-icon">🏆</div>
+            <p id="final-message">Selamat! Kamu sudah cocok menjadi ahli sejarah! 🎓🥇</p>
+            <button id="restart-button">Main Lagi</button>
+        </div>           
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

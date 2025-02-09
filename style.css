@@ -1,0 +1,357 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Judul */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Flip Card */
+.card {
+    width: 250px;
+    height: 350px;
+    margin: 0 auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Sisi depan dan belakang kartu */
+.card .front, 
+.card .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.card .front {
+    background: white;
+}
+
+.card .front img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.card .back {
+    background: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    transform: rotateY(180deg);
+}
+
+/* Kontainer pertanyaan */
+#question-container {
+    margin-top: 20px;
+}
+
+#question {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Tombol pilihan jawaban */
+#options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-button {
+    padding: 10px;
+    width: 100%;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option-button:hover {
+    background: #0056b3;
+}
+
+/* Skor */
+#score {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #28a745;
+}
+
+#timer-container {
+    width: 100%;
+    height: 25px;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 100%;
+    background-color: #ff4d4d; /* Warna merah */
+    transition: width 1s linear; /* Animasi */
+}
+
+/* Popup Animasi */
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50px);
+    width: 300px;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+#popup-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Popup Akhir Game */
+#final-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    flex-direction: column;
+    align-items: center;
+}
+
+#final-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+#final-message {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+#restart-button {
+    background: white;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#restart-button:hover {
+    background: #ddd;
+}
+
+/* Animasi muncul */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* 🎬 Start Screen */
+#start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1E3C72, #2A5298);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+#start-screen h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+#start-screen p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* 🎬 Start Screen */
+#start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)), url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* 📝 Teks */
+#start-screen h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#start-screen p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* 🎮 Tombol Mulai */
+#start-button {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    font-size: 22px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.4);
+    transform: scale(1);
+}
+
+#start-button:hover {
+    background: linear-gradient(135deg, #FFA500, #FF4500);
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(255, 165, 0, 0.6);
+}
+
+#start-button:active {
+    transform: scale(0.95);
+}
+
+/* ✨ Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✨ Animasi keluar */
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* 📱 Responsif */
+@media (max-width: 600px) {
+    #start-screen h1 {
+        font-size: 28px;
+    }
+
+    #start-screen p {
+        font-size: 16px;
+    }
+
+    #start-button {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}
+
+
+/* 📱 Responsif */
+@media (max-width: 600px) {
+    #start-screen h1 {
+        font-size: 24px;
+    }
+
+    #start-screen p {
+        font-size: 16px;
+    }
+
+    #start-button {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}
+
+#question-number {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+
+
